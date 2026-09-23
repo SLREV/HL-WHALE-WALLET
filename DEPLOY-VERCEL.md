@@ -44,6 +44,25 @@ File `vercel.json` di repo ini sudah mengatur agar `/` menyajikan `hyperliquid.h
 
 ---
 
+## Opsi C — Bundle zip + CLI (tanpa GitHub sama sekali)
+
+Kalau tidak mau menghubungkan GitHub, pakai bundle siap-upload:
+
+```bash
+# 1) build bundle (atau pakai hl-whale-wallet-vercel.zip yang sudah disediakan)
+./scripts/build-bundle.sh
+
+# 2) ekstrak lalu deploy
+unzip hl-whale-wallet-vercel.zip && cd hl-whale-wallet-vercel
+./deploy.sh                 # Windows: klik dua kali deploy.bat
+```
+
+`deploy.sh` otomatis: install Vercel CLI → login (browser) → `vercel --prod --yes`
+→ mencetak URL publik. Isi bundle sudah lengkap (`plotly.min.js` lokal, tanpa CDN),
+jadi upload ini mandiri — tidak tergantung repo/GitHub.
+
+---
+
 ## ⚠️ Catatan penting: dashboard Python (`hl_app.py`) TIDAK bisa di Vercel
 
 `hl_app.py` adalah aplikasi **Dash** yang butuh proses Python hidup terus-menerus +
