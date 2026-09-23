@@ -20,6 +20,26 @@ const LOGO_WATERMARK = "data:image/png;base64,...";
 
 Untuk Python (dashboard & chart CLI) mereknya ada di `branding.py`.
 
+---
+
+## 0. Jalankan instan di GitHub Codespaces (tanpa install apa pun)
+
+Repo ini sudah **siap Codespaces** — ada konfigurasi `.devcontainer/` + `run.sh`:
+
+1. Buka **<https://codespaces.new/SLREV/HL-WHALE-WALLET>**
+   (atau di GitHub: tombol hijau **Code ▾ → Codespaces → Create codespace on main**).
+2. Tunggu ± 1–3 menit. Dependensi (`requirements.txt`) ter-install **otomatis**,
+   lalu dashboard **langsung menyala sendiri** di port **8051** dan preview-nya
+   terbuka otomatis.
+3. Kalau perlu menjalankan manual (atau restart):
+
+   ```bash
+   ./run.sh              # = python hl_app.py --port 8051
+   ./run.sh 8060         # port lain
+   ```
+
+Semua endpoint publik — **tidak perlu API key**.
+
 ## 1. Instalasi
 
 ```bash

@@ -1,0 +1,21 @@
+{
+  "name": "HL Whale Wallet - Hyperliquid On-Chain",
+  "image": "mcr.microsoft.com/devcontainers/python:3.11",
+
+  "forwardPorts": [8051],
+  "portsAttributes": {
+    "8051": {
+      "label": "Dashboard Hyperliquid (hl_app.py)",
+      "onAutoForward": "openPreview"
+    }
+  },
+
+  "postCreateCommand": "python -m pip install --upgrade pip && python -m pip install -r requirements.txt",
+  "postStartCommand": "nohup ./run.sh > /tmp/hl_dashboard.log 2>&1 &",
+
+  "customizations": {
+    "vscode": {
+      "extensions": ["ms-python.python"]
+    }
+  }
+}

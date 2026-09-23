@@ -1,0 +1,12 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+
+# Output chart HTML yang dihasilkan script
+output/
+
+# Log
+*.log
+nohup.out
