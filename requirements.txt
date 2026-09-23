@@ -1,0 +1,10 @@
+# ---- Wajib -------------------------------------------------------------
+plotly>=6.1.0            # chart interaktif (candlestick + heatmap)
+pandas>=2.0.0            # olah data OHLCV / order book
+numpy>=1.24.0            # komputasi matriks likuiditas
+requests>=2.31.0         # REST API exchange publik
+websocket-client>=1.6.0  # stream real-time (order book + kline)
+
+# ---- Opsional -----------------------------------------------------------
+dash>=3.0.0              # hanya untuk dashboard.py (dashboard real-time di browser)
+kaleido>=1.0.0           # hanya untuk ekspor PNG (butuh Chrome: `plotly_get_chrome`)
