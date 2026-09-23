@@ -1,0 +1,5 @@
+# File Python tidak diperlukan untuk deployment statis di Vercel
+# (dashboard Dash / hl_app.py tidak bisa jalan di serverless — lihat DEPLOY-VERCEL.md)
+*.py
+requirements.txt
+output/
