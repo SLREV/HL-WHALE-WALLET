@@ -63,6 +63,39 @@ jadi upload ini mandiri — tidak tergantung repo/GitHub.
 
 ---
 
+## 🔧 Troubleshooting
+
+### Error: `No python entrypoint found. Set "tool.vercel.entrypoint" in pyproject.toml…`
+
+**Penyebab:** Vercel melihat `requirements.txt` + file `.py` di root repo dan
+mengira ini **aplikasi Python**, lalu mencari entrypoint (`app.py`, `main.py`, …)
+yang memang tidak ada — padahal deployment-nya harusnya statis.
+
+**Solusi:** sudah diperbaiki lewat `vercel.json` versi terbaru di repo ini.
+Kunci `builds` membuat Vercel **melewati semua auto-deteksi** dan hanya
+menjalankan builder statis untuk `*.html` + `plotly.min.js`:
+
+```json
+{
+  "builds": [
+    { "src": "*.html", "use": "@vercel/static" },
+    { "src": "plotly.min.js", "use": "@vercel/static" }
+  ]
+}
+```
+
+Checklist kalau error masih muncul:
+1. Pastikan repo/branch yang di-deploy sudah memuat `vercel.json` versi terbaru (dengan `builds`).
+2. Di dashboard Vercel → project → **Settings → Git** → tekan **Redeploy**.
+3. Atau deploy pakai **bundle zip** (folder `hl-whale-wallet-vercel/` berisi file
+   statis saja — tidak ada Python sama sekali, mustahil ter-detect sebagai Python).
+
+> Catatan: `.vercelignore` hanya berlaku untuk deploy lewat **CLI**, tidak untuk
+> build otomatis dari GitHub — karena itu kunci `builds` di `vercel.json` yang
+> jadi lini pertahanan utamanya.
+
+---
+
 ## ⚠️ Catatan penting: dashboard Python (`hl_app.py`) TIDAK bisa di Vercel
 
 `hl_app.py` adalah aplikasi **Dash** yang butuh proses Python hidup terus-menerus +
