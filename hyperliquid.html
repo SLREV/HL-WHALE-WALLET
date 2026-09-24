@@ -729,21 +729,3 @@ main();
 </script>
 </body>
 </html>
-=null;
-function setRefresh(ms){
-  if (renderTimer) clearInterval(renderTimer);
-  renderTimer = setInterval(render, ms);
-}
-async function main(){
-  bindUI();
-  await loadCoins();
-  await switchSymbol();
-  render();
-  setRefresh(+document.getElementById("refresh").value);
-  tickTimer = setInterval(updateTicker, 700);
-  setInterval(()=>{ loadCandles().catch(()=>{}); }, 60000);
-}
-main();
-</script>
-</body>
-</html>
